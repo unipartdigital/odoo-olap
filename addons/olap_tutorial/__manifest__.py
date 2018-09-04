@@ -11,6 +11,7 @@
                 'stock'],
 
     'data': [
+        "security/ir.model.access.csv",
         'data/olap_report_data.xml',
         "data/ir_cron.xml",
         'views/report_tutorial_views.xml',
