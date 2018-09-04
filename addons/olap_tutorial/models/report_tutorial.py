@@ -30,7 +30,7 @@ class RTBModel(models.AbstractModel):
         max_age = datetime.now() - timedelta(hours=24)
         res = self.env[self._reported_model].search(
             [('picking_type_id', '=', goods_in_type.id),
-             ('write_date', '>', fields.Datetime.to_string(max_age))])
+             ('create_date', '>', fields.Datetime.to_string(max_age))])
         return res
 
     @api.model
