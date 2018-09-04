@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<odoo>
+
+
+    <record id="ir_cron_tutorial_report" model="ir.cron">
+        <field name="name">Tutorial Report</field>
+        <field name="model_id" ref="olap.model_olap_report"/>
+        <field name="state">code</field>
+        <field name="code">
+model.env.ref('olap_tutorial.tutorial_report_type').update_report()
+        </field>
+        <field name="active" eval="True"/>
+        <field name="user_id" ref="base.user_root"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+    </record>
+
+</odoo>

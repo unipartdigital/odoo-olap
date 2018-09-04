@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="list">
+        <field name="name">olap_tutorial list</field>
+        <field name="model">olap_tutorial.record.receipt_to_bin</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="scheduled_date"/>
+                <field name="num_lines"/>
+                <field name="po_number"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- search filter -->
+    <record id="search_view" model="ir.ui.view">
+        <field name="name">olap_tutorial.olap_tutorial search</field>
+        <field name="model">olap_tutorial.record.receipt_to_bin</field>
+        <field name="arch" type="xml">
+            <search string="Search Reports">
+                <field name="name"/>
+                <field name="picking_id"/>
+                <field name="scheduled_date"/>
+                <field name="num_lines"/>
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="list_window_action">
+        <field name="name">Report Tutorial</field>
+        <field name="res_model">olap_tutorial.record.receipt_to_bin</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <!-- Menu item -->
+    <menuitem id="report_tutorial_list_menu" name="RTB Tutorial"
+              action="list_window_action" parent="olap.viewer_menu"
+              sequence="12"/>
+
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <!-- Top-level menu -->
+        <menuitem name="Reporting" id="top_menu"
+                  sequence="50"/>
+
+        <menuitem name="Report Viewers" id="viewer_menu" parent="top_menu"
+                  sequence="10"/>
+
+        <menuitem name="Reports" id="report_menu" parent="top_menu"
+                  sequence="20"/>
+
+    </data>
+</odoo>
