@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!-- Form view -->
+    <record id="report_viewer_form" model="ir.ui.view">
+        <field name="name">olap_tutorial.report.viewer.receipt_to_bin.form</field>
+        <field name="model">olap_tutorial.report.viewer.receipt_to_bin</field>
+        <field name="arch" type="xml">
+            <form string="RTB Report">
+                <sheet>
+                    <group name="select">
+                        <field name="from_date"/>
+                        <field name="to_date"/>
+                        <button name="action_compute_report" type="object"
+                                string="Run Report"/>
+                        <button name="action_goto_export_view" type="object"
+                                string="Export Current"/>
+                    </group>
+                    <group name="data">
+                        <field name="mean_lines" readonly="1"/>
+                        <field name="total_lines" readonly="1"/>
+                    </group>
+                    <group name="report_records">
+                        <field name="rtb_record_ids" nolabel="1">
+                            <tree>
+                                <field name="name"/>
+                                <field name="scheduled_date"/>
+                                <field name="num_lines"/>
+                                <field name="po_number"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="viewer_window_action">
+        <field name="name">Report Tutorial Viewer</field>
+        <field name="res_model">olap_tutorial.report.viewer.receipt_to_bin</field>
+        <field name="view_mode">form</field>
+        <field name="view_id"
+               eval="ref('olap_tutorial.report_viewer_form')"/>
+    </record>
+
+    <!-- Menu item -->
+    <menuitem id="report_tutorial_viewer_menu" name="RTB Tutorial Custom Viewer"
+              action="viewer_window_action"
+              parent="olap.viewer_menu"
+              sequence="10"/>
+
+</odoo>

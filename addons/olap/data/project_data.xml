@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <!-- Create "New" issue stage -->
+    <record id="task_type_new" model="project.task.type">
+        <field name="name">New</field>
+        <field name="sequence" eval="10"/>
+        <field name="fold" eval="False"/>
+    </record>
+
+    <!-- Create "Closed" issue status -->
+    <record id="task_type_closed" model="project.task.type">
+        <field name="name">Closed</field>
+        <field name="sequence" eval="50"/>
+        <field name="fold" eval="True"/>
+    </record>
+
+    <!-- Create project -->
+    <record id="project_default" model="project.project">
+        <field name="name">Reports</field>
+        <field name="label_tasks">Issues</field>
+        <field name="type_ids" eval="[(6,0,[ref('task_type_new'),
+                                            ref('task_type_closed')])]"/>
+    </record>
+
+</odoo>
